@@ -7,27 +7,29 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @StateObject private var viewModel = LocationSearchViewModel()
-    @State private var searchText = ""
-    
-    var body: some View {
-        NavigationView {
-            VStack {
-                SearchBar(text: $searchText, onSearch: {
-                    viewModel.searchLocation(query: searchText)
-                })
-                
-                List(viewModel.searchResults, id: \..name) { result in
-                    NavigationLink(destination: LocationDetailView(location: result)) {
-                        LocationRow(location: result)
+
+    struct ContentView: View {
+        @StateObject private var viewModel = LocationSearchViewModel()
+        @State private var searchText = ""
+        
+        var body: some View {
+            NavigationView {
+                VStack {
+                    SearchBar(text: $searchText, onSearch: {
+                        viewModel.searchLocation(query: searchText)
+                    })
+                    
+                    List(viewModel.searchResults, id: \..name) { result in
+                        let location = Location(name: result.name, latitude: result.latitude, longitude: result.longitude)
+                        NavigationLink(destination: LocationDetailView(location: location)) {
+                            LocationRow(location: location)
+                        }
                     }
                 }
+                .navigationTitle("Find Places")
             }
-            .navigationTitle("Find Places")
         }
     }
-}
 
 
 #Preview {

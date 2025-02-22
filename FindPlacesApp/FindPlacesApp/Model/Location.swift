@@ -7,8 +7,9 @@
 import SwiftUI
 import MapKit
 
-struct Place: Identifiable {
+struct Location: Identifiable {
     let id = UUID()
     let name: String
-    let coordinate: CLLocationCoordinate2D
+    let latitude: Double
+    let longitude: Double
 }

@@ -1,0 +1,8 @@
+//
+//  Config.xcconfig
+//  FindPlacesApp
+//
+//  Created by Evelyn Callista Yaurentius on 22/02/25.
+//
+
+MAPBOX_API_KEY = pk.eyJ1IjoiY2FsbGlzdGEyNCIsImEiOiJjbTdmazQydDgwMDZiMmtwbDFydDl1em9lIn0.ejlT7Em-usaBgP7UGqiw9A

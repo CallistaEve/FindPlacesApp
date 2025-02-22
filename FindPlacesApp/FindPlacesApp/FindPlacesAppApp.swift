@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct FindPlacesAppApp: App {
+    init() {
+        print("Mapbox API Key: \(Bundle.main.mapboxAPIKey)")
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
+

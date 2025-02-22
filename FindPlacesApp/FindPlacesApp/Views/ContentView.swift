@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = LocationSearchViewModel()
+    @State private var searchText = ""
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                SearchBar(text: $searchText, onSearch: {
+                    viewModel.searchLocation(query: searchText)
+                })
+                
+                List(viewModel.searchResults, id: \..name) { result in
+                    NavigationLink(destination: LocationDetailView(location: result)) {
+                        LocationRow(location: result)
+                    }
+                }
+            }
+            .navigationTitle("Find Places")
         }
-        .padding()
     }
 }
+
 
 #Preview {
     ContentView()
